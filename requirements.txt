@@ -1,0 +1,18 @@
+# Requirements for example scripts and demo agent
+
+# Install community tools from PyPI
+strands-tools-community>=0.1.0
+
+# Install Strands with desired model provider (choose one)
+strands-agents[anthropic]>=1.11.0  # Recommended
+# OR
+# strands-agents[openai]>=1.11.0
+# OR
+# strands-agents[bedrock]>=1.11.0
+
+# Demo agent interactive features
+prompt-toolkit>=3.0.0
+halo>=0.0.31
+colorama>=0.4.6
+python-dotenv>=1.0.0
+
