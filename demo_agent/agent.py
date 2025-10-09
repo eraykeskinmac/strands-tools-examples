@@ -192,17 +192,15 @@ Available Tools:
    Supported languages: en, es, fr, de, tr, and 30+ more
    Formats: WAV, MP3, M4A, FLAC, etc.
 
-2. **hubspot** - CRM Operations  
+2. **hubspot** - CRM Data Access (Read-Only)
    Actions:
-   - search: Find objects with filters
+   - search: Find objects with advanced filters
    - get: Retrieve specific object by ID
-   - create: Create new CRM objects
-   - update: Update existing objects
-   - delete: Delete objects
    - list_properties: Discover available properties
    - get_user_details: Get user/owner information
    
    Object types: contacts, deals, companies, tickets, and more
+   Note: Read-only access for data safety
 
 3. **teams** - Microsoft Teams Notifications
    Templates:
@@ -221,11 +219,11 @@ Usage Patterns:
 - "transcribe https://example.com/call.mp3 in Turkish"
 - "analyze sentiment in audio: call.wav"
 
-**CRM Operations:**
+**CRM Queries:**
 - "search for contacts with email containing '@example.com'"
-- "create a deal called 'Acme Corp' with amount 50000"
+- "find all deals created this month"
 - "get contact details for ID 12345"
-- "update company 67890 with new industry Technology"
+- "search for companies in the technology industry"
 
 **Team Notifications:**
 - "send a Teams notification about new leads"
@@ -235,6 +233,7 @@ Usage Patterns:
 **Combined Workflows:**
 - "transcribe call.mp3, find the customer in HubSpot, and send summary to Teams"
 - "search for this week's deals and send a Teams digest"
+- "find contacts with missing data and generate audit report for Teams"
 
 Response Style:
 ==============

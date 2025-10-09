@@ -111,10 +111,11 @@ transcribe call.mp3, find customer in HubSpot, and send summary to Teams
 
 ### HubSpot - CRM Operations
 
-- Search across any object type
-- Get, create, update records
-- Property discovery
-- Association management
+- Search across any object type (contacts, deals, companies, tickets)
+- Get detailed records by ID
+- Property discovery and exploration
+- Advanced filtering and queries
+- **Read-only** for data safety
 
 ### Microsoft Teams - Rich Notifications
 

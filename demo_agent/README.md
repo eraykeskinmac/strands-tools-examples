@@ -90,23 +90,26 @@ echo "search for contacts in HubSpot" | python agent.py
 # analyze sentiment and topics in audio: call.wav
 ```
 
-### HubSpot - CRM Operations
+### HubSpot - CRM Data Access (Read-Only)
 
 ```
 # Search contacts
 # search for contacts with email containing '@example.com'
 
-# Create a deal
-# create a deal called 'Acme Corp Q4' with amount 50000
+# Find deals
+# find all deals created in the last 30 days
 
 # Get object details
 # get contact details for ID 12345
 
-# Update records
-# update company 67890 with industry set to Technology
+# Search companies
+# search for companies in the technology industry
 
 # List available properties
 # list all properties for deals
+
+# Advanced queries
+# find contacts without company association
 ```
 
 ### Microsoft Teams - Notifications
@@ -129,13 +132,16 @@ echo "search for contacts in HubSpot" | python agent.py
 
 ```
 # End-to-end call processing
-# transcribe call.mp3, find the caller in HubSpot by phone, create a call activity, and send summary to Teams
+# transcribe call.mp3, find the caller in HubSpot by phone, and send enriched summary to Teams
 
 # Daily digest
 # search for all deals closed today in HubSpot and send a formatted digest to Teams
 
-# Lead qualification
+# Lead intelligence
 # search for leads created in the last 24 hours and send a notification to Teams with details
+
+# Data quality audit
+# find contacts with missing key fields and generate audit report for Teams
 ```
 
 ## Special Commands

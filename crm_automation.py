@@ -1,18 +1,18 @@
-"""CRM Automation Example - Automated HubSpot workflows.
+"""CRM Automation Example - Automated HubSpot reporting workflows.
 
-This example demonstrates common CRM automation patterns using the HubSpot tool,
-including lead qualification, deal management, and reporting.
+This example demonstrates common CRM reporting and analysis patterns using the 
+HubSpot tool (read-only). Perfect for generating insights and notifications.
 
 Workflows:
-1. Daily Lead Digest - Find and qualify new leads
+1. Daily Lead Digest - Find and report on new leads
 2. Deal Pipeline Report - Analyze deals by stage
-3. Contact Enrichment - Update contact properties
-4. Company Cleanup - Standardize company data
+3. Contact Data Audit - Identify contacts with missing information
+4. Company Data Review - Analyze company data quality
 
 Usage:
     python crm_automation.py --workflow daily-leads
     python crm_automation.py --workflow deal-report
-    python crm_automation.py --workflow enrich-contacts
+    python crm_automation.py --workflow contact-audit
 """
 
 import argparse
@@ -99,75 +99,78 @@ def deal_pipeline_report(agent: Agent) -> None:
     print("\n✅ Deal pipeline report completed!")
 
 
-def enrich_contacts(agent: Agent) -> None:
-    """Enrich contact records with missing information."""
-    print("🔍 Enriching contact records...\n")
+def contact_data_audit(agent: Agent) -> None:
+    """Audit contact records for missing or incomplete data."""
+    print("🔍 Auditing contact records...\n")
 
     result = agent("""
-    Contact enrichment workflow:
+    Contact data audit workflow:
     
-    1. Search HubSpot for contacts missing key information:
+    1. Search HubSpot for contacts and analyze data quality:
        - Contacts without company association
        - Contacts without job title
        - Contacts without lifecycle stage
-       - Limit to 20 contacts for batch processing
+       - Limit to 50 contacts for analysis
     
-    2. For each contact:
-       - Check if email domain matches existing company
-       - Suggest company association if match found
-       - Infer job title from available data if possible
-       - Recommend lifecycle stage based on engagement
+    2. For each contact, identify gaps:
+       - Missing required fields
+       - Incomplete contact information
+       - No recent activity or engagement
+       - Email domain analysis for company matching
     
-    3. Prepare update recommendations:
-       - List contacts that can be automatically updated
-       - Flag contacts requiring manual review
-       - Suggest new companies to create
+    3. Generate actionable insights:
+       - List contacts needing attention
+       - Contacts with potential company matches (by email domain)
+       - Suggested lifecycle stages based on available data
+       - Priority items for manual data entry
     
-    4. Send enrichment report to Teams:
-       - Number of contacts processed
-       - Automatic updates made
-       - Manual reviews needed
-       - Data quality score
+    4. Send audit report to Teams:
+       - Number of contacts analyzed
+       - Data quality statistics
+       - Top 10 contacts needing updates
+       - Recommended actions for CRM team
     
-    Provide enrichment summary.
+    Provide complete audit summary.
     """)
 
-    print("\n✅ Contact enrichment completed!")
+    print("\n✅ Contact data audit completed!")
 
 
-def company_cleanup(agent: Agent) -> None:
-    """Standardize and cleanup company records."""
-    print("🏢 Cleaning up company records...\n")
+def company_data_review(agent: Agent) -> None:
+    """Review and analyze company data quality."""
+    print("🏢 Reviewing company data...\n")
 
     result = agent("""
-    Company data cleanup workflow:
+    Company data review workflow:
     
     1. Search HubSpot for companies:
-       - Get all companies with basic properties
-       - Limit to 50 for initial cleanup batch
+       - Get companies with key properties
+       - Limit to 100 for comprehensive analysis
     
-    2. Identify cleanup opportunities:
+    2. Analyze data quality issues:
        - Companies with missing domain
-       - Companies with inconsistent naming
-       - Companies missing industry classification
-       - Companies without proper country/city data
+       - Companies with incomplete information
+       - Missing industry classification
+       - Incomplete location data (country/city)
+       - Duplicate company names (potential duplicates)
     
-    3. Suggest standardizations:
-       - Standardize company names (capitalize properly)
-       - Infer domains from company names
-       - Classify industries based on available data
-       - Normalize location data
+    3. Generate insights and recommendations:
+       - Companies needing immediate attention
+       - Suggested domain names based on company names
+       - Industry classification suggestions
+       - Location data corrections needed
+       - Potential duplicate companies to merge
     
-    4. Generate cleanup report for Teams:
-       - Data quality issues found
-       - Suggested corrections
-       - Priority items for manual review
-       - Overall data quality score
+    4. Send analysis report to Teams:
+       - Data quality statistics
+       - Top 20 companies needing updates
+       - Priority recommendations
+       - Overall data health score
     
-    Provide cleanup summary.
+    Provide complete analysis summary.
     """)
 
-    print("\n✅ Company cleanup analysis completed!")
+    print("\n✅ Company data review completed!")
 
 
 def main():
@@ -177,7 +180,7 @@ def main():
     )
     parser.add_argument(
         "--workflow",
-        choices=["daily-leads", "deal-report", "enrich-contacts", "company-cleanup"],
+        choices=["daily-leads", "deal-report", "contact-audit", "company-review"],
         required=True,
         help="Workflow to execute"
     )
@@ -202,10 +205,10 @@ def main():
             daily_leads_digest(agent)
         elif args.workflow == "deal-report":
             deal_pipeline_report(agent)
-        elif args.workflow == "enrich-contacts":
-            enrich_contacts(agent)
-        elif args.workflow == "company-cleanup":
-            company_cleanup(agent)
+        elif args.workflow == "contact-audit":
+            contact_data_audit(agent)
+        elif args.workflow == "company-review":
+            company_data_review(agent)
 
         return 0
 

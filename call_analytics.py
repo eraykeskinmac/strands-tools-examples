@@ -1,13 +1,13 @@
 """Call Analytics Example - End-to-end call processing workflow.
 
 This example demonstrates how to combine Deepgram, HubSpot, and Teams tools
-to create a complete call analytics and CRM integration workflow.
+to create a complete call analytics and CRM lookup workflow.
 
 Workflow:
 1. Transcribe call recording using Deepgram
 2. Search for contact in HubSpot by phone number
-3. Create call activity in HubSpot with transcript
-4. Send summary notification to Teams
+3. Get contact details and history
+4. Send summary notification to Teams with transcript and customer info
 
 Usage:
     python call_analytics.py recording.mp3 +1234567890
@@ -45,20 +45,17 @@ def process_call(audio_file: str, phone_number: str) -> None:
     
     2. Search HubSpot for contact with phone number: {phone_number}
        - Try different phone formats (with/without country code)
-       - Get contact details including name and company
+       - Get contact details including name, email, and company
+       - Get associated deals and recent interactions if available
     
-    3. If contact found, create a call activity in HubSpot:
-       - Set call direction based on context
-       - Include full transcript in call notes
-       - Set call duration and timestamp
-       - Associate with the contact
-    
-    4. Send a summary to Teams:
-       - Contact name and company
-       - Call duration and outcome
+    3. Send a comprehensive summary to Teams:
+       - Contact information (name, company, email)
+       - Call transcript with speaker labels
+       - Call duration and timestamp
        - Key topics discussed
        - Sentiment analysis
-       - Next steps or action items
+       - Suggested next steps or action items
+       - Link to contact in HubSpot
     
     Provide a complete summary of all steps.
     """)
