@@ -20,28 +20,7 @@ import sys
 import time
 from pathlib import Path
 
-# Load .env file if it exists
-try:
-    from dotenv import load_dotenv
-    # Try to load .env from current directory
-    env_path = Path('.env')
-    if env_path.exists():
-        load_dotenv(env_path)
-        print(f"✅ Loaded environment from: {env_path.absolute()}")
-except ImportError:
-    # dotenv not installed, try loading manually
-    env_path = Path('.env')
-    if env_path.exists():
-        with open(env_path) as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('#') and '=' in line:
-                    key, value = line.split('=', 1)
-                    # Remove quotes if present
-                    value = value.strip().strip('"').strip("'")
-                    os.environ[key.strip()] = value
-        print(f"✅ Loaded environment from: {env_path.absolute()}")
-
+from dotenv import load_dotenv
 from prompt_toolkit import prompt
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.history import FileHistory
@@ -96,10 +75,18 @@ except ImportError:
 # Import callback handler
 from handlers.callback_handler import callback_handler
 
-# Import community tools
-from strands_tools_community import deepgram, hubspot, teams
+# Import community tools (individual packages)
+from strands_deepgram import deepgram
+from strands_hubspot import hubspot
+from strands_teams import teams
 
 console = Console()
+
+# Load environment variables
+env_path = Path('.env')
+if env_path.exists():
+    load_dotenv(env_path)
+    console.print(f"[green]✅ Loaded environment from:[/green] {env_path.absolute()}")
 
 # Generate instance ID
 hostname = socket.gethostname()

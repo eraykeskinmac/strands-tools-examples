@@ -20,7 +20,8 @@ import sys
 from datetime import datetime, timedelta
 
 from strands import Agent
-from strands_tools_community import hubspot, teams
+from strands_hubspot import hubspot
+from strands_teams import teams
 
 
 def daily_leads_digest(agent: Agent) -> None:

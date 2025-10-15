@@ -1,7 +1,14 @@
 # Requirements for example scripts and demo agent
 
-# Install community tools from PyPI
-strands-tools-community>=0.1.0
+# ===================================
+# Community Tools (Individual Packages)
+# ===================================
+strands-hubspot>=0.1.0
+strands-teams>=0.1.0
+strands-deepgram>=0.1.0
+
+# Legacy combined package (alternative)
+# strands-tools-community>=0.1.0
 
 # Install Strands with desired model provider (choose one)
 strands-agents[anthropic]>=1.11.0  # Recommended

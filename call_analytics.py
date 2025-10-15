@@ -18,7 +18,9 @@ import sys
 from datetime import datetime
 
 from strands import Agent
-from strands_tools_community import deepgram, hubspot, teams
+from strands_deepgram import deepgram
+from strands_hubspot import hubspot
+from strands_teams import teams
 
 
 def process_call(audio_file: str, phone_number: str) -> None:

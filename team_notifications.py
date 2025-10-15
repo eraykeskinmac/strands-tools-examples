@@ -19,7 +19,7 @@ import argparse
 import sys
 
 from strands import Agent
-from strands_tools_community import teams
+from strands_teams import teams
 
 
 def send_simple_notification(agent: Agent, title: str, message: str, color: str = "default") -> None:
